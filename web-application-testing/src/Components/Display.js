@@ -86,7 +86,7 @@ const Display = props => {
           <p>{outs}</p>
         </div>
       </div>
-      <Dashboard addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall}/>
+      <Dashboard addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount}/>
     </div>
   );
 }

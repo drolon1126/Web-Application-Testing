@@ -19,6 +19,10 @@ const Dashboard = props => {
       e.preventDefault();
       props.addOut();
     }}>Add Out</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.addHit();
+    }}>Hit</button>
     </>
   );
 }
