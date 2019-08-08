@@ -9,6 +9,7 @@ const Display = props => {
   const [runsAway,setRunsAway] = useState(0);
   const [inning,setInning] = useState(1);
   const [bottomOrTop, setBottomOrTop] = useState(0); //0 is the top half of the inning 1 is the bottom
+  const [inningHalf, setInningHalf] = useState(<p>Top</p>);
 
   const resetCount = () => {
     setBalls(0);
@@ -56,6 +57,22 @@ const Display = props => {
     }
   }
 
+  const addRun = () => {
+    if(bottomOrTop === 0){
+      setRunsHome(runsHome+1);
+    } else {
+      setRunsAway(runsAway+1);
+    }
+  }
+
+  useEffect(()=>{
+    if(bottomOrTop===0){
+      setInningHalf(<p>Top</p>);
+    } else{
+      setInningHalf(<p>Bottom</p>);
+    }
+  },[bottomOrTop]);
+
   return (
     <div className='scoreboard'>
       <div className='score'>
@@ -64,6 +81,7 @@ const Display = props => {
           <p>{runsHome}</p>
         </div>
         <div className='inning scoreDisp'>
+          {inningHalf}
           <p>{inning}</p>
           <h2>Inning</h2>
         </div>
@@ -86,7 +104,7 @@ const Display = props => {
           <p>{outs}</p>
         </div>
       </div>
-      <Dashboard addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount}/>
+      <Dashboard addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount} addRun={addRun}/>
     </div>
   );
 }

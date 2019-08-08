@@ -23,6 +23,10 @@ const Dashboard = props => {
       e.preventDefault();
       props.addHit();
     }}>Hit</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.addRun();
+    }}>Run</button>
     </>
   );
 }
