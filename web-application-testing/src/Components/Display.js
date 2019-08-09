@@ -10,8 +10,10 @@ const Display = props => {
   const [runsAway, setRunsAway] = useState(0);
   const [inning, setInning] = useState(1);
   const [bottomOrTop, setBottomOrTop] = useState(0); //0 is the top half of the inning 1 is the bottom
-  const [inningHalf, setInningHalf] = useState(<p>Top</p>);
   const [baseArray, setBaseArray] = useState([false, false, false]);
+  const [inningHalf, setInningHalf] = useState(<p>Top</p>);
+  const [home, setHome] = useState(<h2 style={{textDecoration:'underline'}}>Home</h2>);
+  const [guest, setGuest] = useState(<h2>Guest</h2>);
 
   const resetCount = () => {
     setBalls(0);
@@ -296,8 +298,12 @@ const Display = props => {
   useEffect(() => {
     if (bottomOrTop === 0) {
       setInningHalf(<p>Top</p>);
+      setHome(<h2 style={{textDecoration:'underline'}}>Home</h2>);
+      setGuest(<h2 style={{textDecoration:'none'}}>Guest</h2>);
     } else {
       setInningHalf(<p>Bottom</p>);
+      setHome(<h2 style={{textDecoration:'none'}}>Home</h2>);
+      setGuest(<h2 style={{textDecoration:'underline'}}>Guest</h2>);
     }
   }, [bottomOrTop]);
 
@@ -305,7 +311,7 @@ const Display = props => {
     <div className='scoreboard'>
       <div className='score'>
         <div className='home scoreDisp'>
-          <h2>Home</h2>
+          {home}
           <p data-testid='runCountHome'>{runsHome}</p>
         </div>
         <div className='inning scoreDisp'>
@@ -316,7 +322,7 @@ const Display = props => {
           <h2>Inning</h2>
         </div>
         <div className='away  scoreDisp'>
-          <h2>Guest</h2>
+          {guest}
           <p data-testid='runCountAway'>{runsAway}</p>
         </div>
       </div>
