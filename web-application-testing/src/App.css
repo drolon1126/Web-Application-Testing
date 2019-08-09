@@ -23,6 +23,28 @@
   color: #61dafb;
 }
 
+h2, h3{
+  color: white;
+}
+
+p{
+  color: red;
+  background-color: black;
+}
+
+#disp{
+  background-color: black;
+}
+
+button{
+  margin: 5px;
+}
+
+.scoreboard {
+  background-color: green;
+  padding: 20px;
+}
+
 .score, .count {
   display: flex; 
   justify-content: center;
@@ -30,4 +52,7 @@
 
 .scoreDisp {
   margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

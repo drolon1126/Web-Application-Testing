@@ -81,12 +81,14 @@ const Display = props => {
           <p data-testid='runCountHome'>{runsHome}</p>
         </div>
         <div className='inning scoreDisp'>
-          {inningHalf}
-          <p data-testid='inningCount'>{inning}</p>
+          <div id='disp'>
+            {inningHalf}
+            <p data-testid='inningCount'>{inning}</p>
+          </div>
           <h2>Inning</h2>
         </div>
         <div className='away  scoreDisp'>
-          <h2>Away</h2>
+          <h2>Guest</h2>
           <p data-testid='runCountAway'>{runsAway}</p>
         </div>
       </div>

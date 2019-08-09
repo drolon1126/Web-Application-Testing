@@ -11,7 +11,7 @@ it('renders without crashing', () => {
 
  wrapper.getByText(/Home/);
  wrapper.getByText(/Inning/);
- wrapper.getByText(/Away/);
+ wrapper.getByText(/Guest/);
 
  wrapper.getByText(/Balls:/);
  wrapper.getByText(/Strikes:/);
