@@ -12,14 +12,14 @@ const Display = props => {
   const [bottomOrTop, setBottomOrTop] = useState(0); //0 is the top half of the inning 1 is the bottom
   const [inningHalf, setInningHalf] = useState(<p>Top</p>);
   const [baseArray, setBaseArray] = useState([false, false, false]);
-  
+
   const resetCount = () => {
     setBalls(0);
     setStrikes(0);
   }
 
   const changeHalf = () => {
-    setBaseArray([false,false,false]);
+    setBaseArray([false, false, false]);
     if (bottomOrTop === 0) {
       setBottomOrTop(1)
     } else {
@@ -39,12 +39,12 @@ const Display = props => {
   }
 
   const playerOut = (player) => {
-    let tmpArr=[];
-    switch(player){
+    let tmpArr = [];
+    switch (player) {
       case 'first':
-        tmpArr = baseArray.map((base,i)=>{
-          if(i===0){
-            if(base===true){
+        tmpArr = baseArray.map((base, i) => {
+          if (i === 0) {
+            if (base === true) {
               addOut();
             }
             return false;
@@ -54,28 +54,28 @@ const Display = props => {
         });
         break;
       case 'second':
-          tmpArr = baseArray.map((base,i)=>{
-            if(i===1){
-              if(base===true){
-                addOut();
-              }
-              return false;
-            } else {
-              return base;
+        tmpArr = baseArray.map((base, i) => {
+          if (i === 1) {
+            if (base === true) {
+              addOut();
             }
-          });
+            return false;
+          } else {
+            return base;
+          }
+        });
         break;
       case 'third':
-          tmpArr = baseArray.map((base,i)=>{
-            if(i===2){
-              if(base===true){
-                addOut();
-              }
-              return false;
-            } else {
-              return base;
+        tmpArr = baseArray.map((base, i) => {
+          if (i === 2) {
+            if (base === true) {
+              addOut();
             }
-          });
+            return false;
+          } else {
+            return base;
+          }
+        });
         break;
     }
     setBaseArray(tmpArr);
@@ -103,7 +103,7 @@ const Display = props => {
     }
   }
 
-  const addRun = (amount=1) => {
+  const addRun = (amount = 1) => {
     if (bottomOrTop === 0) {
       setRunsHome(runsHome + amount);
     } else {
@@ -112,31 +112,31 @@ const Display = props => {
   }
 
   const advanceAllRunners = (hitType) => {
-    console.log('current bases: ',baseArray);
+    console.log('current bases: ', baseArray);
     var tmp = baseArray.join(',');
     switch (hitType) {
       case 'single':
         switch (tmp) {
           case [false, false, false].join(','):
-            setBaseArray([true,false,false]);
+            setBaseArray([true, false, false]);
             break;
           case [true, false, false].join(','):
-              setBaseArray([true,true,false]);
+            setBaseArray([true, true, false]);
             break;
           case [false, true, false].join(','):
-              setBaseArray([true,true,false]);
+            setBaseArray([true, true, false]);
             break;
           case [false, false, true].join(','):
-              setBaseArray([true,false,true]);
+            setBaseArray([true, false, true]);
             break;
           case [true, true, false].join(','):
-              setBaseArray([true,true,true]);
+            setBaseArray([true, true, true]);
             break;
           case [true, false, true].join(','):
-              setBaseArray([true,true,true]);
+            setBaseArray([true, true, true]);
             break;
           case [false, true, true].join(','):
-              setBaseArray([true,true,true]);
+            setBaseArray([true, true, true]);
             break;
           case [true, true, true].join(','):
             addRun();
@@ -146,32 +146,32 @@ const Display = props => {
       case 'double':
         switch (tmp) {
           case [false, false, false].join(','):
-              setBaseArray([false,true,false]);
+            setBaseArray([false, true, false]);
             break;
           case [true, false, false].join(','):
-              setBaseArray([false,true,true]);
+            setBaseArray([false, true, true]);
             break;
           case [false, true, false].join(','):
-              setBaseArray([false,true,true]);
+            setBaseArray([false, true, true]);
             break;
           case [false, false, true].join(','):
-              setBaseArray([false,true,true]);
+            setBaseArray([false, true, true]);
             break;
           case [true, true, false].join(','):
-              setBaseArray([false,true,true]);
-              addRun();
+            setBaseArray([false, true, true]);
+            addRun();
             break;
           case [true, false, true].join(','):
-              setBaseArray([false,true,true]);
-              addRun();
+            setBaseArray([false, true, true]);
+            addRun();
             break;
           case [false, true, true].join(','):
-              setBaseArray([false,true,true]);
-              addRun();
+            setBaseArray([false, true, true]);
+            addRun();
             break;
           case [true, true, true].join(','):
-              setBaseArray([false,true,true]);
-              addRun(2);
+            setBaseArray([false, true, true]);
+            addRun(2);
             break;
         }
         break;
@@ -201,36 +201,94 @@ const Display = props => {
             addRun(3);
             break;
         }
-        setBaseArray([false,false,true]);
+        setBaseArray([false, false, true]);
         break;
       case 'homerun':
         switch (tmp) {
           case [false, false, false].join(','):
-              addRun();
+            addRun();
             break;
           case [true, false, false].join(','):
-              addRun(2);
+            addRun(2);
             break;
           case [false, true, false].join(','):
-              addRun(2);
+            addRun(2);
             break;
           case [false, false, true].join(','):
-              addRun(2);
+            addRun(2);
             break;
           case [true, true, false].join(','):
-              addRun(3);
+            addRun(3);
             break;
           case [true, false, true].join(','):
-              addRun(3);
+            addRun(3);
             break;
           case [false, true, true].join(','):
-              addRun(3);
+            addRun(3);
             break;
           case [true, true, true].join(','):
-              addRun(4);
+            addRun(4);
             break;
         }
-        setBaseArray([false,false,false]);
+        setBaseArray([false, false, false]);
+        break;
+      case 'stealSecond':
+        if (baseArray[0]) {
+          switch (tmp) {
+            case [true, false, false].join(','):
+              setBaseArray([false, true, false]);
+              break;
+            case [true, true, false].join(','):
+              setBaseArray([false, true, true]);
+              break;
+            case [true, false, true].join(','):
+              setBaseArray([false, true, true]);
+              break;
+            case [true, true, true].join(','):
+              setBaseArray([false, true, true]);
+              addRun();
+              break;
+          }
+        }
+        break;
+      case 'stealThird':
+        if (baseArray[1]) {
+          switch (tmp) {
+            case [false, true, false].join(','):
+              setBaseArray([false, false, true]);
+              break;
+            case [true, true, false].join(','):
+              setBaseArray([true, false, true]);
+              break;
+            case [false, true, true].join(','):
+              setBaseArray([false, false, true]);
+              addRun();
+              break;
+            case [true, true, true].join(','):
+              setBaseArray([true, false, true]);
+              addRun();
+              break;
+          }
+        }
+        break;
+      case 'stealHome':
+        if (baseArray[2]) {
+          addRun();
+          switch (tmp) {
+            case [false, false, true].join(','):
+              setBaseArray([false, false, false]);
+              break;
+            case [true, false, true].join(','):
+              setBaseArray([true, false, false]);
+              break;
+            case [false, true, true].join(','):
+              setBaseArray([false, true, false]);
+              break;
+            case [true, true, true].join(','):
+              setBaseArray([true, true, false]);
+              break;
+          }
+        }
         break;
     }
   }
@@ -277,10 +335,10 @@ const Display = props => {
         </div>
       </div>
       <div>
-        <Dashboard playerOut={playerOut} advanceRunners={advanceAllRunners} addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount} addRun={addRun} />
+        <BasesGrid baseArray={baseArray} />
       </div>
       <div>
-        <BasesGrid baseArray={baseArray} />
+        <Dashboard playerOut={playerOut} advanceRunners={advanceAllRunners} addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount} addRun={addRun} />
       </div>
     </div>
   );

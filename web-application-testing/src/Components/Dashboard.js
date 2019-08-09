@@ -44,6 +44,8 @@ const Dashboard = props => {
       props.advanceRunners('homerun');
     }}>Home Run</button>
     </div>
+
+    <div>
     <button onClick={(e)=>{
       e.preventDefault();
       props.playerOut('first');
@@ -56,8 +58,21 @@ const Dashboard = props => {
       e.preventDefault();
       props.playerOut('third');
     }}>Runner on Third Out</button>
-    <div>
+    </div>
 
+    <div>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.advanceRunners('stealSecond');
+    }}>Steal Second</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.advanceRunners('stealThird');
+    }}>Steal Third</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.advanceRunners('stealHome');
+    }}>Steal Home</button>
     </div>
     </>
   );
