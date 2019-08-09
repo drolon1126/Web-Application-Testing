@@ -3,30 +3,62 @@ import React from 'react';
 const Dashboard = props => {
   return (
     <>
+    <div>
     <button onClick={(e)=>{
       e.preventDefault();
       props.addBall();
-    }}>Add Ball</button>
+    }}>Ball</button>
     <button onClick={(e)=>{
       e.preventDefault();
       props.addFoul();
-    }}>Add Foul</button>
+    }}>Foul</button>
     <button onClick={(e)=>{
       e.preventDefault();
       props.addStrike();
-    }}>Add Strike</button>
+    }}>Strike</button>
     <button onClick={(e)=>{
       e.preventDefault();
       props.addOut();
-    }}>Add Out</button>
+    }}>Batter Out</button>
+    </div>
+
+    <div>
     <button onClick={(e)=>{
       e.preventDefault();
       props.addHit();
-    }}>Hit</button>
+      props.advanceRunners('single');
+    }}>Single</button>
     <button onClick={(e)=>{
       e.preventDefault();
-      props.addRun();
-    }}>Run</button>
+      props.addHit();
+      props.advanceRunners('double');
+    }}>Double</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.addHit();
+      props.advanceRunners('triple');
+    }}>Tripple</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.addHit();
+      props.advanceRunners('homerun');
+    }}>Home Run</button>
+    </div>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.playerOut('first');
+    }}>Runner on First Out</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.playerOut('second');
+    }}>Runner on Second Out</button>
+    <button onClick={(e)=>{
+      e.preventDefault();
+      props.playerOut('third');
+    }}>Runner on Third Out</button>
+    <div>
+
+    </div>
     </>
   );
 }
