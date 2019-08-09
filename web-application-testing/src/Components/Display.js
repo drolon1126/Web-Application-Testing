@@ -78,30 +78,30 @@ const Display = props => {
       <div className='score'>
         <div className='home scoreDisp'>
           <h2>Home</h2>
-          <p>{runsHome}</p>
+          <p data-testid='runCountHome'>{runsHome}</p>
         </div>
         <div className='inning scoreDisp'>
           {inningHalf}
-          <p>{inning}</p>
+          <p data-testid='inningCount'>{inning}</p>
           <h2>Inning</h2>
         </div>
         <div className='away  scoreDisp'>
           <h2>Away</h2>
-          <p>{runsAway}</p>
+          <p data-testid='runCountAway'>{runsAway}</p>
         </div>
       </div>
       <div className='count'>
         <div className='balls scoreDisp'>
           <h3>Balls:</h3>
-          <p>{balls}</p>
+          <p data-testid='ballCount'>{balls}</p>
         </div>
         <div className='strikes scoreDisp'>
           <h3>Strikes:</h3>
-          <p>{strikes}</p>
+          <p data-testid='strikeCount'>{strikes}</p>
         </div>
         <div className='outs scoreDisp'>
           <h3>Outs:</h3>
-          <p>{outs}</p>
+          <p data-testid='outCount'>{outs}</p>
         </div>
       </div>
       <Dashboard addOut={addOut} addFoul={addFoul} addStrike={addStrike} addBall={addBall} addHit={resetCount} addRun={addRun}/>
