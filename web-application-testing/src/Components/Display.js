@@ -88,6 +88,7 @@ const Display = props => {
       setBalls(balls + 1);
     } else {
       resetCount();
+      advanceAllRunners('single');
     }
   }
 
